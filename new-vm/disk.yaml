@@ -1,0 +1,21 @@
+---
+- name: Create a very simple VM in GCP
+  hosts: localhost
+  gather_facts: no
+  tasks:
+    - name: create a disk
+      google.cloud.gcp_compute_disk:
+        name: disk-instance
+        size_gb: 58
+        source_image: projects/debian-cloud/global/images/debian-12-bookworm-v20241112
+        zone: us-central1-a
+        project: "terraform-426822"
+        state: "{{statuss}}"
+      register: disk
+    - name: fff
+      debug:
+        msg: "{{disk}}"
+    - name: Save  disk
+      set_stats:
+        data:
+          disk: "{{disk}}"
