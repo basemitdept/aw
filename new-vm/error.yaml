@@ -1,0 +1,6 @@
+- name: make error
+  hosts: localhost
+  gather_facts: no
+  tasks:
+  - name: error
+    command: ech hi
