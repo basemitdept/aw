@@ -1,0 +1,16 @@
+- name: Create a very simple VM in GCP
+  hosts: localhost
+  gather_facts: no
+  tasks:
+  - name: create a network
+    google.cloud.gcp_compute_network:
+      name: default
+      project: "terraform-426822"
+        #auth_kind: serviceaccount
+       # service_account_file: "terraform-426822-5b3f85703c63.json"
+      state: present
+    register: network
+  - name: set facts
+    set_stats:
+      data:
+        network: "{{network}}"
