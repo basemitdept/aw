@@ -5,7 +5,7 @@
   tasks:
    - name: Create VM Instance
      gcp_compute_instance:
-       name: basem
+       name: "{{name}}"
        machine_type: "n1-standard-1"
        zone: "us-central1-a"
        network_interfaces:
@@ -25,7 +25,7 @@
        project: "terraform-426822"
        zone: "us-central1-a"
        filters:
-       - name = "basem"
+       - name = "{{name}}"
   #     auth_kind: serviceaccount 
   #      service_account_file: Downloads/terraform-426822-5b3f85703c63.json
      register: vm_details
@@ -43,6 +43,7 @@
    - name: save artifacts
      set_stats:
        data:
+         vm_name: "{{name}}"
          ip: "{{ip}}"
          size: "{{size}}"
          os: "{{os}}"
