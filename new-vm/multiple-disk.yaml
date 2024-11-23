@@ -3,11 +3,10 @@
   hosts: localhost
   gather_facts: no
   vars:
-    vm_list: []
   tasks:
     - name: create a disk
       google.cloud.gcp_compute_disk:
-        name: "{{items.name}}"
+        name: "{{item.name}}"
         size_gb: "{{item.size}}"
         source_image: projects/debian-cloud/global/images/debian-12-bookworm-v20241112
         zone: us-central1-a
@@ -18,4 +17,4 @@
     - name: Save  disk
       set_stats:
         data:
-          disk: "{{items.disk}}"
+          disk: "{{item.disk}}"
