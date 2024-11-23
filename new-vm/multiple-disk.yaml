@@ -19,16 +19,16 @@
         state: present
       with_items: "{{vm_list}}"
       register: disk
-     - name: Create VM Instance
-       gcp_compute_instance:
-         name: "{{item.name}}"
-         machine_type: "n1-standard-1"
-         zone: "us-central1-a"
-         network_interfaces:
-         - network:  "{{network}}"
-         disks:
-         - auto_delete: 'false'
-           boot: 'true'
-           source: "{{disk}}"
-         project: "terraform-426822"
-         state: present
+    - name: Create VM Instance
+      gcp_compute_instance:
+        name: "{{item.name}}"
+        machine_type: "n1-standard-1"
+        zone: "us-central1-a"
+        network_interfaces:
+        - network:  "{{network}}"
+        disks:
+        - auto_delete: 'false'
+          boot: 'true'
+          source: "{{disk}}"
+        project: "terraform-426822"
+        state: present
