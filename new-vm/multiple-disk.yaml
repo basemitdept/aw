@@ -2,8 +2,6 @@
 - name: Create a very simple VM in GCP
   hosts: localhost
   gather_facts: no
-  vars:
-    vm_list: "{{vm_list}}"
   tasks:
     - name: create a disk
       google.cloud.gcp_compute_disk:
@@ -13,8 +11,8 @@
         zone: us-central1-a
         project: "terraform-426822"
         state: present
-      register: disk
       with_items: "{{vm_list}}"
+      register: disk
     - name: Save  disk
       set_stats:
         data:
