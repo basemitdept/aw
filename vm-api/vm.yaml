@@ -5,6 +5,11 @@
   tasks:
     - name: gg
       command: env
+      register: ee
+
+    - name: fff
+      debug:
+        msg: "{{ee}}"
 
     - name: Obtain OAuth token from service account JSON file
       ansible.builtin.command:
