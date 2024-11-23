@@ -90,3 +90,9 @@
     - name: Output the response from creating the instance
       debug:
         var: create_instance_response
+
+    - name: state
+      set_stats: 
+        data: 
+          error: "{{create_instance_response.content}}"
+        when: "{{create_instance_response.failed}}" == true
