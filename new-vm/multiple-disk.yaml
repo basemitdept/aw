@@ -3,6 +3,7 @@
   hosts: localhost
   gather_facts: no
   vars:
+    vm_list: ["{{vm_list}}"]
   tasks:
     - name: create a disk
       google.cloud.gcp_compute_disk:
