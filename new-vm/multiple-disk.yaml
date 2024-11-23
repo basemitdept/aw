@@ -7,7 +7,7 @@
   tasks:
     - name: create a disk
       google.cloud.gcp_compute_disk:
-        name: "{{item.name}}"
+        name: "{{items.name}}"
         size_gb: "{{item.size}}"
         source_image: projects/debian-cloud/global/images/debian-12-bookworm-v20241112
         zone: us-central1-a
@@ -18,4 +18,4 @@
     - name: Save  disk
       set_stats:
         data:
-          disk: "{{item.disk}}"
+          disk: "{{items.disk}}"
