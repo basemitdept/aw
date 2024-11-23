@@ -15,8 +15,8 @@
       ansible.builtin.command:
         cmd: >
           gcloud auth application-default print-access-token
-        environment:
-          GOOGLE_APPLICATION_CREDENTIALS: "{{ gcpp }}"
+      #  environment:
+      #    GOOGLE_APPLICATION_CREDENTIALS: "{{ gcpp }}"
       register: oauth_token_response
       changed_when: false
 
