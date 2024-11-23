@@ -1,6 +1,7 @@
 ---
 - name: Create Google Cloud VM Instance using Service Account JSON and API
   hosts: localhost
+  ignore_errors: true
   gather_facts: no
   vars: 
     gcp_project_id: "terraform-426822"
