@@ -1,0 +1,31 @@
+---
+- name: Check if a VM exists in GCP
+  hosts: localhost
+  gather_facts: no
+  vars:
+    # Define the VM name you are looking for
+    vm_name: "{{name}}"
+    project_id: "terraform-426822"  # Replace with your GCP project ID
+    zone: "us-central1-a"  # Replace with your desired zone
+
+  tasks:
+    - name: Gather information about all VMs in the specified zone
+      google.cloud.gcp_compute_instance_facts:
+        project: "{{ project_id }}"
+        zone: "{{ zone }}"
+      register: vm_facts
+
+    - name: Check if the specified VM exists
+      set_fact:
+        vm_exists: "{{ vm_name in vm_facts.resources | map(attribute='name') | list }}"
+
+
+    - name: Show success message if VM exists
+      debug:
+        msg: "VM {{ vm_name }} exists in project {{ project_id }} and zone {{ zone }}."
+      when: vm_exists
+
+    - name: set state
+      set_stats:
+        data:
+          error: "VM {{ vm_name }} exists in project {{ project_id }} and zone {{ zone }}."
