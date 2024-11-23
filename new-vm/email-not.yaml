@@ -1,0 +1,71 @@
+---
+- name: Send email via Gmail SMTP
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Send email through Gmail SMTP
+      community.general.mail:
+        host: "smtp.mailersend.net"
+        port: 587
+        username: "MS_DMiwdK@trial-jpzkmgqr3rv4059v.mlsender.net"
+        password: "ulqHQPkF8ANYOCa1"  # Use Ansible Vault for security!
+        to: "basemitdept@gmail.com"
+        subject: "Test Email from Ansible"
+       # body: "This is a test email sent via Gmail SMTP using Ansible."
+        from: "MS_DMiwdK@trial-jpzkmgqr3rv4059v.mlsender.net"
+        secure: starttls
+        subtype: html
+        body: |
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>New Server Created</title>
+              <style>
+                  body {
+                      font-family: Arial, sans-serif;
+                      color: #333;
+                      background-color: #f4f4f4;
+                      margin: 0;
+                      padding: 20px;
+                  }
+                  .container {
+                      background-color: #ffffff;
+                      padding: 20px;
+                      border-radius: 8px;
+                      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                      width: 80%;
+                      max-width: 600px;
+                      margin: 0 auto;
+                  }
+                  .title {
+                      color: #4CAF50;
+                      font-size: 24px;
+                      margin-bottom: 20px;
+                  }
+                  .details {
+                      font-size: 16px;
+                      line-height: 1.5;
+                  }
+                  .details strong {
+                      color: #333;
+                  }
+              </style>
+          </head>
+          <body>
+          
+          <div class="container">
+              <div class="title">New Server Created 🎉</div>
+              <div class="details">
+                  <p><strong>Hostname:</strong> example-server01</p>
+                  <p><strong>"{{ip}}":</strong> 192.168.1.100</p>
+                  <p><strong>Username:</strong> admin</p>
+              </div>
+              <p><em>Your server is now ready and running smoothly!</em></p>
+          </div>
+          
+          </body>
+          </html>
+
+
