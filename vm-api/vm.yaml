@@ -2,6 +2,9 @@
 - name: Create Google Cloud VM Instance using Service Account JSON and API
   hosts: localhost
   gather_facts: no
+  vars: 
+    gcp_project_id: "terraform-426822"
+    
   tasks:
     - name: gg
       command: env
