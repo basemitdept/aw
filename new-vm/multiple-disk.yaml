@@ -3,6 +3,12 @@
   hosts: localhost
   gather_facts: no
   tasks:
+    - name: create a network
+      google.cloud.gcp_compute_network:
+        name: default
+        project: "terraform-426822"
+        state: present
+    register: network
     - name: create a disk
       google.cloud.gcp_compute_disk:
         name: "{{item.name}}"
@@ -13,7 +19,16 @@
         state: present
       with_items: "{{vm_list}}"
       register: disk
-    - name: Save  disk
-      set_stats:
-        data:
-          disk: "{{disk}}"
+     - name: Create VM Instance
+       gcp_compute_instance:
+         name: "{{item.name}}"
+         machine_type: "n1-standard-1"
+         zone: "us-central1-a"
+         network_interfaces:
+         - network:  "{{network}}"
+         disks:
+         - auto_delete: 'false'
+           boot: 'true'
+           source: "{{disk}}"
+         project: "terraform-426822"
+         state: present
