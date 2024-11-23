@@ -15,9 +15,6 @@
         state: present
       register: disk
       with_items: "{{vm_list}}"
-    - name: fff
-      debug:
-        msg: "{{disk}}"
     - name: Save  disk
       set_stats:
         data:
