@@ -8,7 +8,7 @@
         name: default
         project: "terraform-426822"
         state: present
-    register: network
+      register: network
     - name: create a disk
       google.cloud.gcp_compute_disk:
         name: "{{item.name}}"
