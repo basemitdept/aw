@@ -58,7 +58,7 @@
         <div class="container">
             <div class="title">New Server Created 🎉</div>
             <div class="details">
-                <p><strong>Hostname:</strong> example-server01</p>
+                <p><strong>Hostname:</strong> {{name}}</p>
                 <p><strong>IP Address:</strong> {{ip}}</p>
                 <p><strong>Username:</strong> admin</p>
             </div>
