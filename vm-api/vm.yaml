@@ -95,4 +95,3 @@
       set_stats: 
         data: 
           error: "{{create_instance_response.content}}"
-        when: create_instance_response.failed
