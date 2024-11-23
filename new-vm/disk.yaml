@@ -5,7 +5,7 @@
   tasks:
     - name: create a disk
       google.cloud.gcp_compute_disk:
-        name: disk-instance
+        name: "{{name}}"
         size_gb: 58
         source_image: projects/debian-cloud/global/images/debian-12-bookworm-v20241112
         zone: us-central1-a
