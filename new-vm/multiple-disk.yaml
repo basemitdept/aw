@@ -16,4 +16,4 @@
     - name: Save  disk
       set_stats:
         data:
-          disk: "{{item.disk}}"
+          disk: "{{disk}}"
