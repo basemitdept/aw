@@ -9,7 +9,7 @@
         cmd: >
           gcloud auth application-default print-access-token
         environment:
-          GOOGLE_APPLICATION_CREDENTIALS: "{{ service_account_json_file }}"
+          GOOGLE_APPLICATION_CREDENTIALS: "{{ gcp-sa }}"
       register: oauth_token_response
       changed_when: false
 
