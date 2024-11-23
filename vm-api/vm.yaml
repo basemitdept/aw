@@ -3,6 +3,8 @@
   hosts: localhost
   gather_facts: no
   tasks:
+    - name: gg
+      command: env
 
     - name: Obtain OAuth token from service account JSON file
       ansible.builtin.command:
