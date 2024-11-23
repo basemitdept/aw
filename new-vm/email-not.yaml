@@ -59,7 +59,7 @@
             <div class="title">New Server Created 🎉</div>
             <div class="details">
                 <p><strong>Hostname:</strong> example-server01</p>
-                <p><strong>"{{ip}}":</strong> 192.168.1.100</p>
+                <p><strong>IP Address:</strong> {{ip}}</p>
                 <p><strong>Username:</strong> admin</p>
             </div>
             <p><em>Your server is now ready and running smoothly!</em></p>
