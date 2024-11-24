@@ -96,11 +96,13 @@
       set_fact:
         array_count: "{{ vm_list | length }}"
 
+    - 
+
     - name: state
       set_stats: 
         data: 
           error: "{{create_instance_response.results[0].content}}"
-        loop: "{{ range(1, array_count | int + 1) | list }}"
+      loop: "{{ range(1, array_count | int + 1) | list }}"
           
    
 
