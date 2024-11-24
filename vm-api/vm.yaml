@@ -96,7 +96,7 @@
       set_fact:
         array_count: "{{ vm_list | length }}"
 
-    - 
+    
 
     - name: state
       set_stats: 
