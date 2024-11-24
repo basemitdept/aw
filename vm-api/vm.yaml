@@ -96,3 +96,4 @@
       set_stats: 
         data: 
           error: "{{create_instance_response.results[0].content}}"
+          error1: "{{create_instance_response.results[1].content}}"
