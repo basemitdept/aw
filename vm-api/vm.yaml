@@ -103,7 +103,6 @@
         data: 
           vm{{create_instance_response.results[item].item.name}}: "{{create_instance_response.results[item].content}}"
       loop: "{{ range(0, array_count | int ) | list }}"
-      with_items: vm_list
           
    
 
