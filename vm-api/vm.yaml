@@ -101,7 +101,7 @@
     - name: state
       set_stats: 
         data: 
-          vm"{{item}}": "{{create_instance_response.results[item].content}}"
+          vm{{item}}: "{{create_instance_response.results[item].content}}"
       loop: "{{ range(0, array_count | int ) | list }}"
           
    
