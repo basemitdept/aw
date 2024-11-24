@@ -86,7 +86,7 @@
         body_format: json
         return_content: yes
       register: create_instance_response
-      with_items: {{vm_list"}}
+      with_items: "{{vm_list}}"
 
     - name: Output the response from creating the instance
       debug:
