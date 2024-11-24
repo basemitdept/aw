@@ -34,10 +34,10 @@
           disks:
             - autoDelete: true
               boot: true
-              deviceName: "instance-20241123-213056"
+              deviceName: "{{item.name}}"
               diskEncryptionKey: {}
               initializeParams:
-                diskSizeGb: "11"
+                diskSizeGb: "{{item.size}}"
                 diskType: "projects/{{ gcp_project_id }}/zones/us-central1-b/diskTypes/pd-ssd"
                 sourceImage: "projects/debian-cloud/global/images/debian-12-bookworm-v20241112"
                 resourcePolicies:
@@ -86,6 +86,7 @@
         body_format: json
         return_content: yes
       register: create_instance_response
+      with_items: {{vm_list"}}
 
     - name: Output the response from creating the instance
       debug:
