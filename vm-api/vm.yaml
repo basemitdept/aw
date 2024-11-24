@@ -54,7 +54,7 @@
           machineType: "projects/{{ gcp_project_id }}/zones/us-central1-b/machineTypes/e2-medium"
           metadata:
             items: []
-          name: "instance-20241123-213056"
+          name: "{{item.name}}"
           networkInterfaces:
             - nicType: "VIRTIO_NET"
               stackType: "IPV4_ONLY"
@@ -95,4 +95,4 @@
     - name: state
       set_stats: 
         data: 
-          error: "{{create_instance_response.content}}"
+          error: "{{create_instance_response.results.content}}"
