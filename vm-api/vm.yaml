@@ -92,8 +92,11 @@
       debug:
         var: create_instance_response
 
-    - name: state
-      set_stats: 
-        data: 
-          error: "{{create_instance_response.results[0].content}}"
-          error1: "{{create_instance_response.results[1].content}}"
+   # - name: state
+   #   set_stats: 
+   #     data: 
+   #       error: "{{create_instance_response.results[0].content}}"
+   #       error1: "{{create_instance_response.results[1].content}}"
+    - name: Set stats for each resource created
+      set_stats:
+        data: "{{ lookup('dict', vm_list | zip(create_instance_response.results) | list) | map(attribute='1.content') | list }}"
