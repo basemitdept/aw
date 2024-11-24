@@ -1,0 +1,20 @@
+---
+- name: Send email via Gmail SMTP
+  hosts: localhost
+  gather_facts: false
+  tasks:
+  - name: Send email through Gmail SMTP
+    community.general.mail:
+      host: "smtp.mailersend.net"
+      port: 587
+      username: "MS_DMiwdK@trial-jpzkmgqr3rv4059v.mlsender.net"
+      password: "ulqHQPkF8ANYOCa1"  # Use Ansible Vault for security!
+      to: "basemitdept@gmail.com"
+      subject: "Test Email from Ansible"
+     # body: "This is a test email sent via Gmail SMTP using Ansible."
+      from: "MS_DMiwdK@trial-jpzkmgqr3rv4059v.mlsender.net"
+      secure: starttls
+      subtype: html
+      body: |
+        vm failed to be created fir the reason bellow:
+        "{{test3}}"
