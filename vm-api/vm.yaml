@@ -102,7 +102,7 @@
       set_stats: 
         data: 
           error: "{{create_instance_response.results[item].content}}"
-      loop: "{{ range(1, array_count | int + 1) | list }}"
+      loop: "{{ range(0, array_count | int ) | list }}"
           
    
 
