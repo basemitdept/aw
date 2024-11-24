@@ -95,4 +95,4 @@
     - name: state
       set_stats: 
         data: 
-          error: "{{create_instance_response.results.content}}"
+          error: "{{create_instance_response.results[0].content}}"
