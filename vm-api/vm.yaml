@@ -91,16 +91,16 @@
     - name: Output the response from creating the instance
       debug:
         var: create_instance_response
+      
+    - name: Save the count of the array in a variable
+      set_fact:
+        array_count: "{{ vm_list | length }}"
 
-   # - name: state
-   #   set_stats: 
-   #     data: 
-   #       error: "{{create_instance_response.results[0].content}}"
-   #       error1: "{{create_instance_response.results[1].content}}"
-    - name: Set stats dynamically for each VM
-      set_stats:
-        data: "{{ ansible_facts | combine({ item.0: item.1.content }) }}"
-      loop: "{{ vm_list | zip(create_instance_response.results) | list }}"
-      loop_control:
-        label: "{{ item.0 }}"  # This will show the VM name in the output
+    - name: state
+      set_stats: 
+        data: 
+          error: "{{create_instance_response.results[0].content}}"
+        loop: "{{ range(1, array_count + 1) | list }}"
+          
+   
 
