@@ -101,7 +101,8 @@
     - name: state
       set_stats: 
         data: 
-          vm{{create_instance_response.results[item].item.name}}: "{{create_instance_response.results[item].content}}"
+          "{{create_instance_response.results[item].item.name}}": "{{create_instance_response.results[item].content}}"
+      when: create_instance_response.results[item].failed
       loop: "{{ range(0, array_count | int ) | list }}"
           
    
