@@ -114,7 +114,7 @@
       set_stats: 
         data: 
           status: Failed
-          "{{create_instance_response.results[item].item.name}}": "{{create_instance_response.results[item].content.json.error.errors[0].reason}}"
+          "{{create_instance_response.results[item].item.name}}": "{{create_instance_response.results[item].json.error.errors[0].reason}}"
       when: create_instance_response.results[item].failed
       loop: "{{ range(0, array_count | int ) | list }}"
           
