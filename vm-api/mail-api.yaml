@@ -19,8 +19,8 @@
   #    data:
   #      combined: "{{status.results[item].item.name,status.results[item].json.error.errors[0].reason}}"
   - name: dfg 
-    set_facts:
-        combined:  "{{ status.results[item].item.name | default('') }} {{ status.results[item].json.error.errors[0].reason | default('\n')  }}"
+    set_fact:
+      combined:  "{{ status.results[item].item.name | default('') }} {{ status.results[item].json.error.errors[0].reason | default('\n')  }}"
     when: status.results[item].failed
     loop: "{{ range(0, array_count | int ) | list }}"
 
