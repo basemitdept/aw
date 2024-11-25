@@ -3,6 +3,25 @@
   hosts: localhost
   gather_facts: false
   tasks:
+  - name: Save the count of the array in a variable
+    set_fact:
+      array_count: "{{ vm_list | length }}" 
+  - name: success stats
+    set_stats: 
+      data: 
+        "{{create_instance_response.results[item].item.name}}": "{{create_instance_response.results[item].content}}"
+    when: create_instance_response.results[item].failed == false
+    loop: "{{ range(0, array_count | int ) | list }}"
+   
+  - name: failed stats
+    set_stats: 
+      data: 
+        "{{create_instance_response.results[item].item.name}}": "{{create_instance_response.results[item].json.error.errors[0].reason}}"
+    when: create_instance_response.results[item].failed
+    loop: "{{ range(0, array_count | int ) | list }}"
+
+
+
   - name: Send email through Gmail SMTP
     community.general.mail:
       host: "smtp.mailersend.net"
@@ -16,5 +35,5 @@
       secure: starttls
       subtype: html
       body: |
-        vm failed to be created fir the reason bellow:
+        
         "{{test3}}"
