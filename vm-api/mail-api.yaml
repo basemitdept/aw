@@ -25,6 +25,11 @@
     when: status.results[item].failed
     loop: "{{ range(0, array_count | int ) | list }}"
 
+  - name: gggg 
+    set_stats:
+      data:
+        bbb: "{{combined[0]}}"
+
   
 
   
