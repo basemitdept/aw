@@ -21,8 +21,7 @@
   - name: dfg 
     set_stats:
       data:
-        combined: "{{ combined | default('') + (status.results[item].item.name + ' ' + status.results[item].json.error.errors[0].reason + '\n') }}"
-        # "{{ status.results[item].item.name | default('') }} {{ status.results[item].json.error.errors[0].reason | default('') }}"
+        combined:  "{{ status.results[item].item.name | default('') }} {{ status.results[item].json.error.errors[0].reason | default('') | join('|') }}"
     when: status.results[item].failed
     loop: "{{ range(0, array_count | int ) | list }}"
 
