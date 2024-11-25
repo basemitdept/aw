@@ -34,9 +34,9 @@
 
 
 
-  - name: Initialize the result list
-      set_fact:
-        result_list: []
+  #- name: Initialize the result list
+  #    set_fact:
+  #      result_list: []
 
 
   - name: Send email through Gmail SMTP
