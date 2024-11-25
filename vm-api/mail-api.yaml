@@ -6,20 +6,32 @@
   - name: Save the count of the array in a variable
     set_fact:
       array_count: "{{ vm_list | length }}" 
-  - name: success stats
-    set_stats: 
-      data: 
-        "{{status.results[item].item.name}}": "{{status.results[item].content}}"
-    when: status.results[item].failed == false
-    loop: "{{ range(0, array_count | int ) | list }}"
-   
-  - name: failed stats
-    set_stats: 
-      data: 
-        "{{status.results[item].item.name}}": "{{status.results[item].json.error.errors[0].reason}}"
-    when: status.results[item].failed
-    loop: "{{ range(0, array_count | int ) | list }}"
+  #- name: success stats
+  #  set_stats: 
+  #    data: 
+  #      "{{status.results[item].item.name}}": "{{status.results[item].content}}"
+  #  when: status.results[item].failed == false
+  #  loop: "{{ range(0, array_count | int ) | list }}"
 
+
+  - name: dfg 
+    set_stats:
+      data:
+        combined: "{{status.results[item].item.name,status.results[item].json.error.errors[0].reason}}"
+
+
+  #- name: failed stats
+  #  set_stats: 
+  #    data: 
+  #      "{{status.results[item].item.name}}": "{{status.results[item].json.error.errors[0].reason}}"
+  #  when: status.results[item].failed
+  #  loop: "{{ range(0, array_count | int ) | list }}"
+
+
+
+  - name: Initialize the result list
+      set_fact:
+        result_list: []
 
 
   - name: Send email through Gmail SMTP
